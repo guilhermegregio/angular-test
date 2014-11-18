@@ -1,9 +1,9 @@
-describe('UserDataService', function () {
+suite('UserDataService', function () {
 	var UserDataService;
 	var $httpBackend;
 	var User;
-	beforeEach(module('myApp'));
-	beforeEach(inject(function (_userDataService_, _User_, _$httpBackend_) {
+	setup(module('myApp'));
+	setup(inject(function (_userDataService_, _User_, _$httpBackend_) {
 		UserDataService = _userDataService_;
 		User = _User_;
 		$httpBackend = _$httpBackend_;
@@ -21,9 +21,9 @@ describe('UserDataService', function () {
 
 	}));
 
-	describe("UserDataService load", function () {
+	suite("UserDataService load", function () {
 
-		it("should get list", function () {
+		test("should get list", function () {
 			var result;
 			var user;
 
@@ -35,10 +35,10 @@ describe('UserDataService', function () {
 
 			user = result[0];
 
-			expect(result.length).toBe(1);
-			expect(user instanceof User).toBe(true);
-			expect(user.name).toBe('Guilherme');
-			expect(user.annualSalary()).toBe(13000);
+			assert.equal(result.length, 1);
+			assert.equal(user instanceof User, true);
+			assert.equal(user.name, 'Guilherme');
+			assert.equal(user.annualSalary(), 13000);
 		});
 	});
 

@@ -1,23 +1,24 @@
-describe('Directive', function () {
+suite('Directive', function () {
 	var element;
 	var $compile;
 	var $scope;
-	beforeEach(module('myApp'));
-	beforeEach(inject(function (_$compile_, $rootScope) {
+
+	setup(module('myApp'));
+	setup(inject(function (_$compile_, $rootScope) {
 		$compile = _$compile_;
 		$scope = $rootScope;
 		element = angular.element('<div eh-simple>{{2 + 2}}</div>');
 		element = $compile(element)($rootScope);
 	}));
 
-	it("should equal 4", function () {
+	test("should equal 4", function () {
 		$scope.$digest();
-		expect(element.html()).toBe('4');
+		assert.equal(element.html(), 4);
 	});
 
-	describe("ehSimple", function () {
-		it("should add a class of plain", function () {
-			expect(element.hasClass('plain')).toBe(true);
+	suite("ehSimple", function () {
+		test("should add a class of plain", function () {
+			assert.equal(element.hasClass('plain'), true);
 		});
 	});
 });

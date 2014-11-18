@@ -1,23 +1,23 @@
-describe('UserModel', function () {
+suite('UserModel', function () {
 	var User;
 
-	beforeEach(module('myApp'));
-	beforeEach(inject(function (_User_) {
+	setup(module('myApp'));
+	setup(inject(function (_User_) {
 		User = _User_;
 	}));
 
-	describe("UserModel contructor", function () {
+	suite("UserModel contructor", function () {
 
-		it("should constructor user model", function () {
+		test("should constructor user model", function () {
 			var user = new User({name: 'Guilherme'});
 
-			expect(user.name).toBe('Guilherme');
+			assert.equal(user.name, 'Guilherme');
 		});
 
-		it("should show 40000 annual salary", function () {
+		test("should show 40000 annual salary", function () {
 			var user = new User({name: 'Guilherme', salary: 4500});
 
-			expect(user.annualSalary()).toBe(58500);
+			assert.equal(user.annualSalary(), 58500);
 		});
 
 	});
