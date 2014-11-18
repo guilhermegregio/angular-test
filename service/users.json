@@ -1,0 +1,15 @@
+{
+    "content": [
+        {
+            "id": "1234567890",
+            "name": "Guilherme Zica Monster",
+            "salary": "10000"
+        },
+        {
+            "id": "0987654321",
+            "name": "Rafael Antonio Lucio Ziquinha Junior",
+            "salary": "5000"
+        }
+    ],
+    "numberOfResults": "1"
+}
