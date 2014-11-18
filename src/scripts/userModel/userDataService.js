@@ -2,9 +2,9 @@
 
 	angular.module('myApp').factory('userDataService', userDataService);
 
-	userDataService.$inject = ['restService', '$q', 'User'];
+	userDataService.$inject = ['restService', '$q', 'User', 'modelTransformer'];
 
-	function userDataService(restService, $q, User) {
+	function userDataService(restService, $q, User, modelTransformer) {
 
 		var deferred = $q.defer();
 		var users = restService.one('users.json');
@@ -17,13 +17,7 @@
 
 		function list() {
 			users.get().then(function (result) {
-
-				var arr = [];
-				result.data.content.forEach(function (user) {
-					arr.push(new User(user));
-				});
-
-				deferred.resolve(arr);
+				deferred.resolve(modelTransformer.transform(result.data.content, User));
 			}, function (error) {
 				deferred.reject(error);
 			});

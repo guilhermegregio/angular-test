@@ -3,6 +3,7 @@
 	angular.module('myApp').value('User', UserModel);
 
 	function UserModel(attributes) {
+		attributes = attributes || {};
 		this.id = attributes.id;
 		this.name = attributes.name;
 		this.salary = attributes.salary;
