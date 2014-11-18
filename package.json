@@ -1,0 +1,21 @@
+{
+  "name": "test-model",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "dependencies": {
+    "karma": "^0.12.25"
+  },
+  "devDependencies": {
+    "jasmine-core": "^2.1.2",
+    "karma": "^0.12.25",
+    "karma-jasmine": "^0.3.0",
+    "karma-ng-scenario": "^0.1.0",
+    "karma-phantomjs-launcher": "^0.1.4"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC"
+}
