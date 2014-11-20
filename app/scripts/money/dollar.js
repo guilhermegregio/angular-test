@@ -1,13 +1,21 @@
 (function () {
-	angular.module('models').value('Dollar', Dollar);
+	angular.module('models').factory('Dollar', DollarFactory);
 
+	DollarFactory.$inject = ['Money'];
 
-	function Dollar(amount) {
-		this.amount = amount;
+	function DollarFactory(Money) {
+
+		var Dollar = (function (_super) {
+			__extends(Dollar, _super);
+			function Dollar() {
+				_super.apply(this, arguments);
+				this.currency = 'USD';
+			}
+
+			return Dollar;
+		})(Money);
+
+		return Dollar;
 	}
-
-	Dollar.prototype.times = function (multiplier) {
-		return new Dollar(this.amount * multiplier);
-	};
 
 })();
