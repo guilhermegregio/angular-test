@@ -1,11 +1,11 @@
-suite('UserDataService', function () {
-	var UserDataService;
+suite('UserManager', function () {
+	var UserManager;
 	var $httpBackend;
 	var User;
 	setup(module('myApp'));
-	setup(inject(function (_userDataService_, _User_, _$httpBackend_) {
-		UserDataService = _userDataService_;
-		User = _User_;
+	setup(inject(function (_usersManager_, _UserModel_, _$httpBackend_) {
+		UserManager = _usersManager_;
+		User = _UserModel_;
 		$httpBackend = _$httpBackend_;
 
 		$httpBackend.whenGET("/test-model/service/users.json").respond({
@@ -21,13 +21,13 @@ suite('UserDataService', function () {
 
 	}));
 
-	suite("UserDataService load", function () {
+	suite("UserManager load", function () {
 
 		test("should get list", function () {
 			var result;
 			var user;
 
-			UserDataService.getList().then(function (_result_) {
+			UserManager.getList().then(function (_result_) {
 				result = _result_;
 			});
 
@@ -38,8 +38,6 @@ suite('UserDataService', function () {
 			assert.equal(result.length, 1);
 			assert.equal(user instanceof User, true);
 			assert.equal(user.name, 'Guilherme');
-			assert.equal(user.annualSalary(), 13000);
 		});
 	});
-
 });

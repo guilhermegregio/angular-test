@@ -1,10 +1,10 @@
 (function () {
 
-	angular.module('myApp').factory('userDataService', userDataService);
+	angular.module('myApp').factory('usersManager', usersManager);
 
-	userDataService.$inject = ['restService', '$q', 'User', 'modelTransformer'];
+	usersManager.$inject = ['restService', '$q', 'modelTransformer'];
 
-	function userDataService(restService, $q, User, modelTransformer) {
+	function usersManager(restService, $q, modelTransformer) {
 
 		var deferred = $q.defer();
 		var users = restService.one('users.json');
@@ -15,9 +15,11 @@
 
 		return service;
 
+		///////////////////////
+
 		function list() {
 			users.get().then(function (result) {
-				deferred.resolve(modelTransformer.transform(result.data.content, User));
+				deferred.resolve(modelTransformer.transform(result.data.content, 'User'));
 			}, function (error) {
 				deferred.reject(error);
 			});
@@ -25,5 +27,4 @@
 			return deferred.promise;
 		}
 	}
-
 })();

@@ -2,8 +2,8 @@ suite('UserModel', function () {
 	var User;
 
 	setup(module('myApp'));
-	setup(inject(function (_User_) {
-		User = _User_;
+	setup(inject(function (_UserModel_) {
+		User = _UserModel_;
 	}));
 
 	suite("UserModel contructor", function () {
@@ -13,13 +13,5 @@ suite('UserModel', function () {
 
 			assert.equal(user.name, 'Guilherme');
 		});
-
-		test("should show 40000 annual salary", function () {
-			var user = new User({name: 'Guilherme', salary: 4500});
-
-			assert.equal(user.annualSalary(), 58500);
-		});
-
 	});
-
 });
