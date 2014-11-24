@@ -7,7 +7,7 @@
 	DefualtActions.$inject = ['restService', '$q', 'modelTransformer'];
 
 	/*
-	 {
+	 * {
 	 create: POST,
 	 save: PUT,
 	 get: GET, // um item,
